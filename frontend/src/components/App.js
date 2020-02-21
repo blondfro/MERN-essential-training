@@ -21,11 +21,12 @@ function App () {
                 console.log(error)
             });
 
-    }, []);
+    }, [players, currentPlayer]);
 
     function updateCurrentPlayer(item) {
         setCurrentPlayer(item)
     }
+
 
       return (
           <div className="container-fluid">
