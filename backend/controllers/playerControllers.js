@@ -35,4 +35,16 @@ export const getPlayerByID = (req, res) => {
     });
 };
 
+// PUT a player
+export const updatePlayer = (req, res) => {
+    // we need to pass in the id, and requests body to get the current info.
+    // we also want to pass in the {new: true} param so that we return the updated info.
+    Player.findOneAndUpdate({_id: req.params.PlayerId}, req.body, {new: true}, (err, Player) => {
+        if (err) {
+            res.send(err)
+        } res.json(Player);
+    });
+};
+
+
 
