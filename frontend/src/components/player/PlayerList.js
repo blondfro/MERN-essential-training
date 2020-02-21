@@ -1,9 +1,11 @@
 import React from 'react';
 
-function PlayerList() {
+function PlayerList({players, ...props}) {
     return (
         <div>
-            Player List
+            {players.map( player => {
+                return <div key={player.firstName}>{player.firstName}</div>
+            })}
         </div>
     );
 }

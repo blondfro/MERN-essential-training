@@ -1,39 +1,30 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import './App.css';
 import PlayerList from "./player/PlayerList";
 import PlayerSingle from "./player/PlayerSingle";
 import PlayerForm from "./player/PlayerForm";
 
-class App extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            players: [],
-            currentPlayer: {}
-        };
+function App () {
 
-        this.updateCurrentPlayer = this.updateCurrentPlayer.bind(this);
-    }
+    const [players, setPlayers] = useState([]);
+    const [currentPlayer, setCurrentPlayer] = useState({});
 
-    componentDidMount() {
+    useEffect( () => {
         const url = "http://localhost:4000/players";
         axios.get(url)
             .then((Response) => {
-            this.setState({player: Response.data})
-        })
+                setPlayers(Response.data)
+            })
             .catch((error) => {
-            console.log(error)
-        })
+                console.log(error)
+            })
+    }, []);
+
+    function updateCurrentPlayer(item) {
+        setCurrentPlayer(item)
     }
 
-    updateCurrentPlayer(item) {
-        this.setState({
-            currentPlayer: item,
-        })
-    }
-
-  render() {
       return (
           <div className="container-fluid">
               <div className="row">
@@ -44,8 +35,8 @@ class App extends React.Component{
               <div className="row">
                   <div className="col s3">
                       <PlayerList
-                          players = {this.state.players}
-                          updateCurrentPlayer = {this.updateCurrentPlayer}
+                          players = {players}
+                          updateCurrentPlayer = {updateCurrentPlayer}
                       />
                   </div>
                   <div className="col s9">
@@ -59,7 +50,6 @@ class App extends React.Component{
               </div>
           </div>
       );
-  }
 
 
 }
