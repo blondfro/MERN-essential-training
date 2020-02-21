@@ -17,9 +17,18 @@ export const addNewPlayer = (req, res) => {
     });
 };
 
-// the GET
+// GET all players
 export const getPlayers = (req, res) => {
     Player.find({}, (err, Player) => {
+        if (err) {
+            res.send(err)
+        } res.json(Player);
+    });
+};
+
+// GET a player
+export const getPlayerByID = (req, res) => {
+    Player.findById(req.params.PlayerId, (err, Player) => {
         if (err) {
             res.send(err)
         } res.json(Player);
