@@ -1,0 +1,20 @@
+// controller are the functions that interact with the db when a request is made to the api
+// the flow is the request sends to the api with route and the controller executes.
+
+import mongoose from "mongoose";
+import { PlayerSchema } from "../models/playerModels";
+
+// create a new instance of the schema.
+const Player = mongoose.model("Player", PlayerSchema);
+
+// the POST
+export const addNewPlayer = (req, res) => {
+    let newPlayer = new Player(req.body);
+    newPlayer.save((err, Player) => {
+        if (err) {
+            res.send(err)
+        } res.json(Player);
+    });
+};
+
+

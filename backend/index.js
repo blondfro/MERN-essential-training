@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyparser from "body-parser";
+import routes from "./routes/appRoutes";
 
 
 const app = express();
@@ -16,6 +17,8 @@ mongoose.connect("mongodb://localhost/soccerDB", {
 // body-parser setup for both urlencoded and json.
 app.use(bodyparser.urlencoded({ extended: true}));
 app.use(bodyparser.json());
+
+routes(app);
 
 // get command
 app.get("/", (req, res) => {
