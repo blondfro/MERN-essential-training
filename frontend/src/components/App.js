@@ -19,7 +19,8 @@ function App () {
             })
             .catch((error) => {
                 console.log(error)
-            })
+            });
+
     }, []);
 
     function updateCurrentPlayer(item) {
