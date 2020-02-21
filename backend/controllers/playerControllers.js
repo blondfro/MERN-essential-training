@@ -46,5 +46,15 @@ export const updatePlayer = (req, res) => {
     });
 };
 
+// DELETE a player
+export const deletePlayer = (req, res) => {
+    // we need to pass in the id, and requests body to get the current info.
+    // we also want to pass in the {new: true} param so that we return the updated info.
+    Player.findOneAndDelete({_id: req.params.PlayerId}, (err, Player) => {
+        if (err) {
+            res.send(err)
+        } res.json({ message: "Successfully deleted player"});
+    });
+};
 
 

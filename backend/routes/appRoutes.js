@@ -12,7 +12,9 @@ const routes = (app) => {
         // GET specific player
         .get(player.getPlayerByID)
         // PUT specific player
-        .put(player.updatePlayer);
+        .put(player.updatePlayer)
+        // DEL specific player
+        .delete(player.deletePlayer);
 };
 
 export default routes;
