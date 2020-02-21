@@ -1,11 +1,12 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyparser from "body-parser";
+import cors from "cors";
 import routes from "./routes/appRoutes";
 
 
 const app = express();
-const PORT = 3000;
+const PORT = 4000;
 
 // mongo connection
 mongoose.Promise = global.Promise;
@@ -17,6 +18,9 @@ mongoose.connect("mongodb://localhost/soccerDB", {
 // body-parser setup for both urlencoded and json.
 app.use(bodyparser.urlencoded({ extended: true}));
 app.use(bodyparser.json());
+
+// using CORS -cross origin requests to prevent breakage during api calls.
+app.use(cors());
 
 routes(app);
 
