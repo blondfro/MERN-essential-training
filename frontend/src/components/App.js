@@ -4,6 +4,7 @@ import './App.css';
 import PlayerList from "./player/PlayerList";
 import PlayerSingle from "./player/PlayerSingle";
 import PlayerForm from "./player/PlayerForm";
+import Menu from "./Menu";
 
 function App () {
 
@@ -29,7 +30,7 @@ function App () {
           <div className="container-fluid">
               <div className="row">
                   <div className="col s12">
-                      Menu
+                      <Menu />
                   </div>
               </div>
               <div className="row">
@@ -40,7 +41,7 @@ function App () {
                       />
                   </div>
                   <div className="col s9">
-                      <PlayerSingle/>
+                      <PlayerSingle player = {currentPlayer}/>
                   </div>
               </div>
               <div className="row">
